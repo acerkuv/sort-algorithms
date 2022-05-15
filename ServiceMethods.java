@@ -5,7 +5,8 @@ public class ServiceMethods {
     // Метод создания массива int длинной из 30 элеметов
     public static int [] fillRandomDataList() {
         Random random = new Random();
-        StartVector = random.ints(30, 1, 50)
+        StartVector = random.ints(100000, 1,
+                        100000)
                 .toArray();
         return StartVector;
     }

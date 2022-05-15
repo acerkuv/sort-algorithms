@@ -1,24 +1,36 @@
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
+        System.out.println("Варианты сортировок масивов iht[10K]");
+
         //Соритировка пузырьком
-        System.out.println("Сортировка пузырьком");
-        BubbleSort bubbleSort = new BubbleSort();
-        // Создаем рандомныей массив длинной 20 int
+        ChoiceSort choiceSort = new ChoiceSort();
+        // Создаем рандомныей массив длинной  int[100K]
         int [] RandMass = ServiceMethods.fillRandomDataList();
         // Выводимм массив на экран
-        ServiceMethods.printMass(RandMass);
-        System.out.println();
+//        ServiceMethods.printMass(RandMass);
 
-        // Вряемя старта
-        double startTime = System.nanoTime();
-        ServiceMethods.printMass(bubbleSort.fillSortedArray(RandMass));
+        // Сортировка выбором
+        double startTime = System.currentTimeMillis();
+        choiceSort.fillSortedArray(RandMass);
+        double endTime = System.currentTimeMillis();
+        System.out.println("Сортировка выбором " + (endTime - startTime)+ " ms");
 
-        //Время завершения
-        double endTime = System.nanoTime();
-        double duration = (endTime - startTime);
-        System.out.println('\n' + "Время выполнения сортировки масива из 30 int пузырьком " +
-                duration + " ns");
+        // Сортировка пузырьком
+        int [] RandMass3 = ServiceMethods.fillRandomDataList();
+        double startTime3 = System.currentTimeMillis();
+        BubbleSortAlg.bubbleSort(RandMass3);
+        double endTime3 = System.currentTimeMillis();
+        System.out.println("Сортировка пузырьком " + (endTime3 - startTime3)+ " ms");
 
+        // Стандартная сортировка
+        int [] RandMass2 = ServiceMethods.fillRandomDataList();
+        double startTime2 = System.currentTimeMillis();
+        Arrays.sort(RandMass2);
+        double endTime2 = System.currentTimeMillis();
+        System.out.println("Стандартная сортировка " + (endTime2 - startTime2) + " ms");
+
+        //Сортировка
     }
 }
